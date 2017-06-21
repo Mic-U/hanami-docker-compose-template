@@ -1,0 +1,4 @@
+project=hanami_docker_compose_template
+architecture=container
+test=minitest
+template=slim
