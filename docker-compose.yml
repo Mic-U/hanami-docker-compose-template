@@ -3,24 +3,24 @@ services:
   mysql:
     image: mysql
     ports:
-      - "3306:3306"
+      - 3306:3306
     environment:
-      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: development
+      MYSQL_ROOT_PASSWORD: root
     volumes:
       - ./containers/mysql:/var/lib/mysql
-  # redis:
-  #   image: redis:alpine
-  #   ports:
-  #     - "6379:6379"
-  #   volumes:
-  #     - ./containers/redis:/data  
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+    links:
+      - mysql
   web:
     build:
       context: .
       dockerfile: ./Dockerfile
     environment:
-      # REDIS_URL: "redis://redis:6379"
-      DATABASE_URL: "mysql2://root:root@mysql:3306/dev"
+      DATABASE_URL: mysql2://root:root@mysql:3306/development
     command: "bundle exec hanami server --host 0.0.0.0 -p 2300"
     volumes:
       - .:/app
@@ -28,7 +28,6 @@ services:
       - ./containers/bundle:/app/.bundle
       - ./containers/node_modules:/app/node_modules
     ports:
-      - "2300:2300"
+      - 2300:2300
     links:
       - mysql
-      # - redis
