@@ -11,7 +11,7 @@ Unrecommended: Using on Windows Machine
 
 See docker-compose.yml file
 
-* web
+* app
   * Hanami application container
   * Using Dockerfile in project root. 
 * mysql
@@ -42,11 +42,11 @@ Without `-d` option, you can see stdout.
 ### 4. Run hanami commands
 
 You can use rake or rails commands on container.  
-`docker-compose run --rm web bundle exec hanami db create` 
+`docker-compose run --rm app bundle exec hanami db create` 
 
 And You can use environment variables.  
 If you want to set HANAMI_ENV test, run below command.  
-`docker-compose run --rm -e HANAMI_ENV=test web bundle exec hanami db create`
+`docker-compose run --rm -e HANAMI_ENV=test app bundle exec hanami db create`
 
 Recommend using alias. 
 
