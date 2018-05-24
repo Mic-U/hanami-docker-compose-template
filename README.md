@@ -27,7 +27,7 @@ See docker-compose.yml file
 
 `git clone git@github.com:Mic-U/hanami-docker-compose-template.git`
 
-### 2. Build Rails image
+### 2. Build Hanami image
 
 `docker-compose build`
 
@@ -41,7 +41,7 @@ Without `-d` option, you can see stdout.
 
 ### 4. Run hanami commands
 
-You can use rake or rails commands on container.  
+You can use rake or hanami commands on container.  
 `docker-compose run --rm app bundle exec hanami db create` 
 
 And You can use environment variables.  
